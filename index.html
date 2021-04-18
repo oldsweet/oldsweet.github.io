@@ -148,19 +148,27 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-机器学习/新建文本文档" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-sklearn-分词" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/04/18/sklearn-%E5%88%86%E8%AF%8D/">sklearn 分词</a>
+    </h1>
+  
+
+        
+        <a href="/2021/04/18/sklearn-%E5%88%86%E8%AF%8D/" class="archive-article-date">
+  	<time datetime="2021-04-18T13:18:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-18</time>
+</a>
+        
+      </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <hr>
-<p>tags:机器学习</p>
-<p>title：sklearn 分词   特征向量化</p>
-<p>date：2021-4-18</p>
-<hr>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.feature_extraction <span class="keyword">import</span> DictVectorizer</span><br><span class="line"><span class="keyword">from</span> sklearn.feature_extraction.text <span class="keyword">import</span> CountVectorizer</span><br><span class="line"></span><br><span class="line"><span class="comment"># 特征向量化</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">dic_name</span>():</span></span><br><span class="line">    data = [</span><br><span class="line">        &#123;<span class="string">&#x27;city&#x27;</span>: <span class="string">&#x27;深圳&#x27;</span>, <span class="string">&#x27;temperature&#x27;</span>: <span class="number">100</span>&#125;,</span><br><span class="line">        &#123;<span class="string">&#x27;city&#x27;</span>: <span class="string">&#x27;上海&#x27;</span>, <span class="string">&#x27;temperature&#x27;</span>: <span class="number">60</span>&#125;,</span><br><span class="line">        &#123;<span class="string">&#x27;city&#x27;</span>: <span class="string">&#x27;深圳&#x27;</span>, <span class="string">&#x27;temperature&#x27;</span>: <span class="number">10</span>&#125;,</span><br><span class="line">        &#123;<span class="string">&#x27;city&#x27;</span>: <span class="string">&#x27;广州&#x27;</span>, <span class="string">&#x27;temperature&#x27;</span>: <span class="number">30</span>&#125;</span><br><span class="line">    ]</span><br><span class="line">    transfer = DictVectorizer(sparse=<span class="literal">False</span>)</span><br><span class="line">    new_data = transfer.fit_transform(data)</span><br><span class="line">    <span class="built_in">print</span>(new_data) <span class="comment"># 这样会对city这种非数值化的特征数值化</span></span><br><span class="line">    <span class="built_in">print</span>(transfer.get_feature_names()) <span class="comment"># 获取所有的特征</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 对分词进行统计</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">english_count_demo</span>():</span></span><br><span class="line">    data = [<span class="string">&#x27;life is short,i like python&#x27;</span>,</span><br><span class="line">            <span class="string">&#x27;life is too long,i dislike python&#x27;</span>]</span><br><span class="line">    transfer = CountVectorizer(stop_words=[<span class="string">&#x27;dislike&#x27;</span>])</span><br><span class="line">    new_data = transfer.fit_transform(data)</span><br><span class="line">    <span class="built_in">print</span>(new_data.toarray())</span><br><span class="line">    <span class="built_in">print</span>(transfer.get_feature_names())</span><br><span class="line">    <span class="built_in">print</span>(new_data)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    <span class="comment"># dic_name()</span></span><br><span class="line">    <span class="comment"># english_count_demo()</span></span><br><span class="line">  </span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
+        
       
 
       
@@ -168,11 +176,33 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">机器学习</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/机器学习//" class="article-tag-list-link color5">机器学习</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2021/04/18/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%96%B0%E5%BB%BA%E6%96%87%E6%9C%AC%E6%96%87%E6%A1%A3/">展开全文 >></a>
+          <a class="article-more-a" href="/2021/04/18/sklearn-%E5%88%86%E8%AF%8D/">展开全文 >></a>
         </p>
       
 
@@ -293,6 +323,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">机器学习</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>
